@@ -33,12 +33,17 @@ npm 패키지 설치 옵션
 ```
 {
   "compilerOptions": {
-    "target": "es2016", // es3, es5, es2015, es2016, es2017, es2018, esnext
-    "module": "commonjs", // commonjs, amd, es2015, esnext
-    "moduleResolution": "node", // node, classic
+    "target": "es2016",
+    // es3, es5, es2015, es2016, es2017, es2018, esnext
+    "module": "commonjs",
+    // commonjs, amd, es2015, esnext
+    "moduleResolution": "node",
+    // node, classic
     "esModuleInterop": true,
-    "jsx": "react", // react, react-native, preserve
-    "strict": true, // noImplicitAny, noImplicitThis, alwaysStrict,
+    "jsx": "preserve",
+    // preserve, react-native, react, react-jsx, react-jsxdev
+    "strict": true,
+    // noImplicitAny, noImplicitThis, alwaysStrict,
     // strictBindCallApply, strictNullChecks,
     // strictFunctionTypes, strictPropertyInitialization
     "allowJs": true,
@@ -46,8 +51,11 @@ npm 패키지 설치 옵션
     "removeComments": true,
     "sourceMap": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
+
 ```
 
 ## 타입스크립트 지원 리액트 설치
@@ -259,3 +267,12 @@ npm install react-hook-form yup
 # `webpack.config.css` 개발/운영환경 설정 분리
 
 # prettier 설정
+
+# npm 주요 명령어
+```bash
+npm audit
+```
+
+```bash
+npm cache verify
+```

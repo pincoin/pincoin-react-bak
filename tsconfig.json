@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2016", // es3, es5, es2015, es2016, es2017, es2018, esnext
-    "module": "commonjs", // commonjs, amd, es2015, esnext
-    "moduleResolution": "node", // node, classic
+    "target": "es2016",
+    // es3, es5, es2015, es2016, es2017, es2018, esnext
+    "module": "commonjs",
+    // commonjs, amd, es2015, esnext
+    "moduleResolution": "node",
+    // node, classic
     "esModuleInterop": true,
-    "jsx": "react", // react, react-native, preserve
-    "strict": true, // noImplicitAny, noImplicitThis, alwaysStrict,
+    "jsx": "preserve",
+    // preserve, react-native, react, react-jsx, react-jsxdev
+    "strict": true,
+    // noImplicitAny, noImplicitThis, alwaysStrict,
     // strictBindCallApply, strictNullChecks,
     // strictFunctionTypes, strictPropertyInitialization
     "allowJs": true,
@@ -13,5 +18,7 @@
     "removeComments": true,
     "sourceMap": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
