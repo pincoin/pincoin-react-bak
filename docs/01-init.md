@@ -346,6 +346,53 @@ module.exports = merge(common, {
 }
 ```
 
+# .env 도입
+```shell
+npm install --save-dev dotenv
+```
+
+`.env` 파일 생성
+```ini
+REACT_APP_TITLE=문서 제목
+```
+
+`webpack.common.js` 파일 수정
+
+```js
+const webpack = require("webpack")
+const dotenv = require("dotenv")
+
+dotenv.config()
+
+module.exports = {
+  // ... 생략
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      title: process.env.REACT_APP_TITLE,
+    }),
+    // ... 생략
+  ],
+}
+```
+
+* 사용 예시 1: tsx 소스 파일
+
+```
+console.log(process.env.REACT_APP_TITLE)
+```
+
+* 사용 예시 2: `index.html`
+
+```
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+<body>
+```
 # ESLint, Prettier 설정
 ## ESLint
 ```shell

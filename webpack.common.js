@@ -1,6 +1,11 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
+const webpack = require("webpack")
+const dotenv = require("dotenv")
+
+dotenv.config()
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
@@ -27,8 +32,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
     new HtmlWebpackPlugin({
       template: "public/index.html",
+      title: process.env.REACT_APP_TITLE,
     }),
     new MiniCssExtractPlugin(),
   ],
