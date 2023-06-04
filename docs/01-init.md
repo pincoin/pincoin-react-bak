@@ -46,8 +46,9 @@ npm 패키지 설치 옵션
     // noImplicitAny, noImplicitThis, alwaysStrict,
     // strictBindCallApply, strictNullChecks,
     // strictFunctionTypes, strictPropertyInitialization
-    "allowJs": true,
-    "checkJs": true,
+    "allowJs": false,
+    "checkJs": false,
+    // 일반 js 파일은 타입스크립트 컴파일하지 않음
     "removeComments": true,
     "sourceMap": true
   },
@@ -55,7 +56,6 @@ npm 패키지 설치 옵션
     "node_modules"
   ]
 }
-
 ```
 
 ## 타입스크립트 지원 리액트 설치
@@ -214,7 +214,6 @@ export default App
 
 # 실행 및 빌드, 배포
 ## `package.json`에 스크립트 명령 추가
-
 ```
 {
   // ... 생략
@@ -265,6 +264,87 @@ npm install react-hook-form yup
 * `@types/redux-persist`
 
 # `webpack.config.css` 개발/운영환경 설정 분리
+## `webpack.config.css` 파일 분리
+`webconfig.common.js` 파일
+
+```js
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+module.exports = {
+  entry: "./src/index.tsx",
+  output: {
+    path: __dirname + "/dist/",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        use: ["file-loader"],
+      },
+      {
+        test: /\.(ts|tsx)$/i,
+        exclude: /node_modules/,
+        resolve: {
+          extensions: [".ts", ".tsx", ".js", ".json"],
+        },
+        use: ["ts-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+  devServer: {
+    port: 3000,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+    open: true,
+  },
+}
+```
+
+`webpack.dev.js` 파일
+```js
+const { merge } = require("webpack-merge")
+const common = require("./webpack.common.js")
+
+module.exports = merge(common, {
+  mode: "development",
+  devtool: "source-map",
+})
+```
+
+`webpack.prod.js` 파일
+```js
+const { merge } = require("webpack-merge")
+const common = require("./webpack.common.js")
+
+module.exports = merge(common, {
+  mode: "production",
+})
+```
+
+## `package.json` 파일 스크립트 명령 수정
+```
+{
+  // ... 생략
+  "scripts": {
+    "start": "npm run dev -- --open",
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack webpack.dev.js"
+  },
+  // ... 생략
+}
+```
 
 # ESLint, Prettier 설정
 ## ESLint

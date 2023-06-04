@@ -13,8 +13,8 @@
     // noImplicitAny, noImplicitThis, alwaysStrict,
     // strictBindCallApply, strictNullChecks,
     // strictFunctionTypes, strictPropertyInitialization
-    "allowJs": true,
-    "checkJs": true,
+    "allowJs": false,
+    "checkJs": false,
     "removeComments": true,
     "sourceMap": true
   },
