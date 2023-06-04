@@ -237,3 +237,25 @@ npm run build
 npx serve dist
 ```
 
+# 기타 라이브러리 설치
+## 타입스크립트 지원 라이브러리 설치
+```bash
+npm install react-router-dom
+npm install --save-dev @types/react-router-dom
+
+npm install redux react-redux @reduxjs/toolkit
+
+npm install redux-persist
+
+npm install axios
+
+npm install react-hook-form yup
+```
+
+최신 버전은 타입스크립트를 이미 지원하므로 다음 패키지는 굳이 설치할 필요가 없다.
+* `@types/react-redux`
+* `@types/redux-persist`
+
+# `webpack.config.css` 개발/운영환경 설정 분리
+
+# prettier 설정
