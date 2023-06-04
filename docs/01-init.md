@@ -266,7 +266,51 @@ npm install react-hook-form yup
 
 # `webpack.config.css` 개발/운영환경 설정 분리
 
-# prettier 설정
+# ESLint, Prettier 설정
+## ESLint
+```shell
+npm install --save-dev eslint 
+npm init @eslint/config
+```
+
+`.eslintrc.js`
+
+```
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+  ],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: ["@typescript-eslint", "react"],
+  rules: {},
+};
+```
+
+## Prettier
+```shell
+npm install --save-dev --save-exac prettier
+```
+* `--save-exac`: 패키지를 정확한 버전으로 설치한다.
+
+`.prettierrc.json`
+```json
+{
+  "tabWidth": 2,
+  "semi": false,
+  "trailingComma": "all"
+}
+```
 
 # npm 주요 명령어
 ```bash
