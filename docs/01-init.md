@@ -257,6 +257,8 @@ npm install redux-persist
 npm install axios
 
 npm install react-hook-form yup
+
+npm install @headlessui/react react-icons
 ```
 
 최신 버전은 타입스크립트를 이미 지원하므로 다음 패키지는 굳이 설치할 필요가 없다.
