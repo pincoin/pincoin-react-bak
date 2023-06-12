@@ -1,3 +1,9 @@
-html, body, #root {
+html, body {
     height: 100%;
+}
+
+#root {
+    min-height: 100vh; /* height 가 아니라 min-height 인 것에 주의 */
+    display: flex;
+    flex-direction: column;
 }
