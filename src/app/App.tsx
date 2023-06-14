@@ -19,19 +19,31 @@ const App = () => {
             <div className="pl-4 font-bold">핀코인 관리자</div>
             <div className="pl-4">검색창</div>
           </div>
-          <div className="inline-flex text-xl justify-center items-center">
-            <div className="pl-4">
-              <MdPersonAdd />
-            </div>
-            <div className="pl-4">
-              <MdLogin />
-            </div>
-            <div className="pl-4">
-              <MdSettings />
-            </div>
-            <div className="pl-4">
-              <MdLogout />
-            </div>
+          <div className="flex justify-center items-center">
+            <a href="#">
+              <span className="inline-block align-middle mr-1">
+                <MdPersonAdd />
+              </span>
+              <span className="inline-block align-middle">회원가입</span>
+            </a>
+            <a href="#" className="pl-4">
+              <span className="inline-block align-middle mr-1">
+                <MdLogin />
+              </span>
+              <span className="inline-block align-middle">로그인</span>
+            </a>
+            <a href="#" className="pl-4">
+              <span className="inline-block align-middle mr-1">
+                <MdSettings />
+              </span>
+              <span className="inline-block align-middle">설정</span>
+            </a>
+            <a href="#" className="pl-4">
+              <span className="inline-block align-middle mr-1">
+                <MdLogout />
+              </span>
+              <span className="inline-block align-middle">로그아웃</span>
+            </a>
           </div>
         </nav>
       </header>
@@ -50,7 +62,7 @@ const App = () => {
             <li className="p-1 font-bold">재고관리</li>
             <ul className="ml-1 mb-1 p-1 border-l-2">
               <li className="pl-1 mb-2">잔여수량</li>
-              <li className="pl-1 mb-2">일광등록</li>
+              <li className="pl-1 mb-2">일괄등록</li>
               <li className="pl-1 mb-2">발주내역</li>
               <li className="pl-1">현재잔액</li>
             </ul>
